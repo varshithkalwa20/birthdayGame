@@ -6,17 +6,65 @@
     <title>Birthday Game</title>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
     <style>
-        body {
-            margin: 0;
-            overflow: hidden; /* Hide scrollbars */
+        @font-face {
+    font-family: 'MyCustomFont'; /* Define a name for your font */
+    src: url('../assets/snow.ttf') format('truetype'); /* Path to your font file */
+}
+      body{ margin: 0;
+       overflow: hidden;
+       display: flex;
+       height: 100vh;
+       justify-content: center;
+          align-items: center;
+
+    
+
+      }
+      #playButton {
+          display: flex;
+          justify-content: center;
+          justify-items: center;
+            padding: 20px 40px;
+            font-size: 24px;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        canvas {
-            display: block; /* Remove inline space */
-            background-color: #87CEEB; /* Optional: sky color */
+        #playButton:hover {
+            background-color: #005F73;
+        }
+        H1{
+            color: purple;
+            font-size:x-larger;
+            font-family: 'MyCustomFont', sans-serif;
+        }
+        #sss{
+            display: flex;
+         flex-direction: column;
         }
     </style>
 </head>
 <body>
-    <script src="./main.js"></script> <!-- Main game logic -->
+    <!-- Play Button -->
+     <div id="sss">
+     <H1>Winter Bear's Birthday Game(GolKa)  </H1>
+     
+    <button id="playButton">Play</button>
+    </div>
+
+    <script>
+        document.getElementById('playButton').addEventListener('click', function () {
+            // Hide the body content (including the Play button)
+            document.body.innerHTML = '';
+
+            // Initialize the game when the button is clicked
+            const script = document.createElement('script');
+            script.src = './main.js'; // Main game logic file
+            document.body.appendChild(script);
+        });
+    </script>
 </body>
 </html>

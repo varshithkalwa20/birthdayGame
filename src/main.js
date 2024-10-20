@@ -25,10 +25,11 @@ let clouds;
 let birds;
 let messageText;
 let surprises;
+let img;
 let speed = 100;
 let jumpHeight = -500;
 let jumped = false;
-let candleCount = 4;
+let candleCount = 6;
 let candlesPassed = 0;
 let gameOver = false;
 let surpriseCount = 2;
@@ -45,12 +46,39 @@ function preload() {
     this.load.image('friendHead', '/assets/friendHead.png');
     this.load.image('spark', '/assets/spark.png');
     this.load.image('snow', '/assets/snow.png');
+    this.load.image('img1', '/assets/img1.jpeg');
+    this.load.image('img2', '/assets/img2.jpeg');
+    this.load.image('img3', '/assets/img3.jpeg');
+    this.load.image('img4', '/assets/img4.jpeg');
+    //this.load.image('birthday', '/assets/birthday.jpeg');
+    this.load.image('bdy', '/assets/bdy.png');
+    this.load.image('mountain', '/assets/mountain.png');
+    this.load.image('skate', '/assets/skate.png');
+    this.load.image('teddy', '/assets/teddy.png');
+    this.load.image('panda', '/assets/panda.png');
+    this.load.image('bts', '/assets/bts.png');
+    this.load.image('v', '/assets/v.png');
+    this.load.image('oikawa', '/assets/oikawa.png');
+
+
+
+    //music doode
+    this.load.audio('backgroundMusic', '/assets/BGM.mp3');
+
+
+
     
 }
+let image = ['img1', 'img2', 'img3','img4'];
+let arr=['teddy','skate','panda','bts','v','oikawa'];
 
 // Create game elements
 function create() {
+
+    const music = this.sound.add('backgroundMusic', { loop: true, volume: 0.5 }); // Adjust volume and 
+    music.play(); 
     this.add.image(config.width / 2, config.height / 2, 'sky');
+    this.add.image(config.width / 2, config.height / 1.1, 'mountain');
 
     const platforms = this.physics.add.staticGroup();
     platforms.create(config.width / 2, config.height - 50, 'ground').setScale(2).refreshBody();
@@ -64,6 +92,7 @@ function create() {
 
     // Create candles, clouds, birds, and surprises
     createCandles.call(this);
+    imgs.call(this);
     createClouds.call(this);
     createBirds.call(this);
     createSurprises.call(this);
@@ -142,23 +171,23 @@ function handleCandleCollision() {
 // Show birthday message with animation
 function showBirthdayMessage() {
     // Create the birthday message text
-    const birthdayText = this.add.text(config.width / 2, config.height / 4, 'Happy Birthday Kaavyaa!', { fontSize: '64px', fill: '#800080' }).setOrigin(0.5); // Changed fill color to purple
-    birthdayText.setAlpha(0); // Start with 0 opacity
+    // const birthdayText = this.add.text(config.width / 2, config.height / 4, '', { fontSize: '64px', fill: '#800080' }).setOrigin(0.1); // Changed fill color to purple
+    // birthdayText.setAlpha(0); // Start with 0 opacity
 
     // Create an image below the message
-    const birthdayImage = this.add.image(config.width / 2, config.height / 4 , 'friendHead').setOrigin(0.1).setScale(0.2); // Adjust Y-coordinate to position below the text
+    const birthdayImage = this.add.image(config.width / 3, config.height /3.5 , 'bdy').setOrigin(0.1).setScale(0.5); // Adjust Y-coordinate to position below the text
     birthdayImage.setAlpha(0); // Start with 0 opacity
 
     // Create sparks particle emitter
    
 
     // Fade in animation for the message
-    this.tweens.add({
-        targets: birthdayText,
-        alpha: 1,
-        duration: 2000,
-        ease: 'Power1',
-    });
+    // this.tweens.add({
+    //     targets: birthdayText,
+    //     alpha: 1,
+    //     duration: 2000,
+    //     ease: 'Power1',
+    // });
        
             // Fade in the birthday image
             this.tweens.add({
@@ -202,7 +231,7 @@ function restartGame() {
 function createCandles() {
     candles = this.physics.add.group();
     const candleDistance = 2000;
-    const candleHeight = config.height - 60; // Ensure candles are at the correct height
+    const candleHeight = config.height - 60; 
     for (let i = 0; i < candleCount; i++) {
         const candle = candles.create(800 + i * candleDistance, candleHeight, 'candle');
         candle.setScale(0.05);
@@ -220,6 +249,17 @@ function createClouds() {
         cloud.setImmovable(true);
     }
 }
+function imgs() {
+    img = this.physics.add.group();
+    const candleDistance = 1750;
+    const candleHeight = config.height - 150; 
+    const scaleFactors = [0.075, 0.1, 0.1, 0.8, 0.15,0.4];
+    for (let i = 0; i < arr.length; i++) {
+        const candle = img.create(500 + i * candleDistance, candleHeight, arr[i]);
+        candle.setScale(scaleFactors[i]);
+        candle.setImmovable(true);
+    }
+}
 
 // Create birds
 function createBirds() {
@@ -233,17 +273,27 @@ function createBirds() {
     }
 }
 
-// Create surprises
+// Create surprise
+// Create surprises with all images displayed once
 function createSurprises() {
     surprises = this.physics.add.group();
-    const surpriseDistance = 3000;
-    for (let i = 0; i < surpriseCount; i++) {
-        // Place surprises slightly higher than ground level to avoid conflict
-        const surprise = surprises.create(1000 + i * surpriseDistance, config.height - 120, 'friendHead');
-        surprise.setScale(0.1);
+    const surpriseDistance = 3000; // Distance between surprises
+    const surpriseHeight = config.height - 420; // Constant height for surprises
+    
+    for (let i = 0; i < image.length; i++) {
+        const surpriseImage = image[i]; // Use each image from the array
+        const randomX = 1000 + i * surpriseDistance + Math.random() * 500; // Randomize x-position within a range
+        const surprise = surprises.create(randomX, surpriseHeight, surpriseImage);
+
+        // Uniform scaling across all surprise images
+        const scaleFactor = 0.25; // Set the scale factor for all images
+        surprise.setScale(scaleFactor); // Apply the same scale to all surprise images
         surprise.setImmovable(true);
     }
 }
+
+
+
 
 // Move the world as the player moves (including candles, clouds, birds, and surprises)
 function moveWorld(distance) {
@@ -252,8 +302,15 @@ function moveWorld(distance) {
         if (candle.x < player.x - player.width && candle.visible) {
             candlesPassed++;
             candle.setVisible(false);
-            candle.disableBody(true, true); // Disable the candle after passing
+            candle.disableBody(false, false); // Disable the candle after passing
             console.log('Candle passed!'); // Debugging output
+        }
+    });
+    img.children.iterate(image => {
+        image.x += distance; // Move each image in the group
+        if (image.x < player.x - player.width && image.visible) {
+          
+            console.log('Image passed!'); // Debugging output for image passing
         }
     });
 
@@ -280,7 +337,7 @@ function moveWorld(distance) {
 // Stop world movement
 function stopWorld() {
     candles.children.iterate(candle => {
-        candle.setVelocityX(0);
+        candle.setVelocityX(1);
     });
     clouds.children.iterate(cloud => {
         cloud.setVelocityX(0);
