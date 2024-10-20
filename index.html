@@ -8,7 +8,7 @@
     <style>
         @font-face {
     font-family: 'MyCustomFont'; /* Define a name for your font */
-    src: url('../assets/snow.ttf') format('truetype'); /* Path to your font file */
+    src: url('./assets/snow.ttf') format('truetype'); /* Path to your font file */
 }
       body{ margin: 0;
        overflow: hidden;
@@ -62,7 +62,7 @@
 
             // Initialize the game when the button is clicked
             const script = document.createElement('script');
-            script.src = './main.js'; // Main game logic file
+            script.src = './src/main.js'; // Main game logic file
             document.body.appendChild(script);
         });
     </script>
