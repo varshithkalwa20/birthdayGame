@@ -38,33 +38,34 @@ let snowEmitter;
 
 // Preload assets
 function preload() {
-    
-    this.load.image('sky', '../assets/sky.png');
-    this.load.image('ground', '../assets/ground.png');
-    this.load.image('candle', '../assets/candle.png');
-    this.load.image('cloud', '../assets/cloud.png');
-    this.load.image('bird', '../assets/moon.png');
-    this.load.image('friendHead', '../assets/friendHead.png');
-    this.load.image('spark', '../assets/spark.png');
-    this.load.image('snow', '../assets/snow.png');
-    this.load.image('img1', '../assets/img1.jpeg');
-    this.load.image('img2', '../assets/img2.jpeg');
-    this.load.image('img3', '../assets/img3.jpeg');
-    this.load.image('img4', '../assets/img4.jpeg');
+   this.load.image('sky', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/sky.png');
+    this.load.image('ground', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/ground.png');
+    this.load.image('candle', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/candle.png');
+    this.load.image('cloud', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/cloud.png');
+    this.load.image('bird', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/moon.png');
+    this.load.image('friendHead', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/friendHead.png');
+    this.load.image('spark', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/spark.png');
+    this.load.image('snow', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/snow.png');
+    this.load.image('img1', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/img1.jpeg');
+    this.load.image('img2', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/img2.jpeg');
+    this.load.image('img3', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/img3.jpeg');
+    this.load.image('img4', '.https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/img4.jpeg');
     //this.load.image('birthday', '/assets/birthday.jpeg');
-    this.load.image('bdy', '../assets/bdy.png');
-    this.load.image('mountain', '../assets/mountain.png');
-    this.load.image('skate', '../assets/skate.png');
-    this.load.image('teddy', '../assets/teddy.png');
-    this.load.image('panda', '../assets/panda.png');
-    this.load.image('bts', '../assets/bts.png');
-    this.load.image('v', '../assets/v.png');
-    this.load.image('oikawa', '../assets/oikawa.png');
+    this.load.image('bdy', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/bdy.png');
+    this.load.image('mountain', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/mountain.png');
+    this.load.image('skate', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/skate.png');
+    this.load.image('teddy', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/teddy.png');
+    this.load.image('panda', '.https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/panda.png');
+    this.load.image('bts', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/bts.png');
+    this.load.image('v', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/v.png');
+    this.load.image('oikawa', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/oikawa.png');
 
 
 
     //music doode
-    this.load.audio('BGM', '../assets/BGM.mp3');
+    this.load.audio('BGM', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/BGM.mp3');
+
+
 
 
 
