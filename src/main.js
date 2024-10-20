@@ -64,7 +64,7 @@ function preload() {
 
 
     //music doode
-    this.load.audio('backgroundMusic', '../assets/BGM.mp3');
+    this.load.audio('BGM', '../assets/BGM.mp3');
 
 
 
@@ -76,7 +76,7 @@ let arr=['teddy','skate','panda','bts','v','oikawa'];
 // Create game elements
 function create() {
 
-    const music = this.sound.add('backgroundMusic', { loop: true, volume: 0.5 }); // Adjust volume and 
+    const music = this.sound.add('BGM', { loop: true, volume: 0.5 }); // Adjust volume and 
     music.play(); 
     this.add.image(config.width / 2, config.height / 2, 'sky');
     this.add.image(config.width / 2, config.height / 1.1, 'mountain');
