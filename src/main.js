@@ -38,32 +38,33 @@ let snowEmitter;
 
 // Preload assets
 function preload() {
-    this.load.image('sky', '/assets/sky.png');
-    this.load.image('ground', '/assets/ground.png');
-    this.load.image('candle', '/assets/candle.png');
-    this.load.image('cloud', '/assets/cloud.png');
-    this.load.image('bird', '/assets/moon.png');
-    this.load.image('friendHead', '/assets/friendHead.png');
-    this.load.image('spark', '/assets/spark.png');
-    this.load.image('snow', '/assets/snow.png');
-    this.load.image('img1', '/assets/img1.jpeg');
-    this.load.image('img2', '/assets/img2.jpeg');
-    this.load.image('img3', '/assets/img3.jpeg');
-    this.load.image('img4', '/assets/img4.jpeg');
+    
+    this.load.image('sky', '../assets/sky.png');
+    this.load.image('ground', '../assets/ground.png');
+    this.load.image('candle', '../assets/candle.png');
+    this.load.image('cloud', '../assets/cloud.png');
+    this.load.image('bird', '../assets/moon.png');
+    this.load.image('friendHead', '../assets/friendHead.png');
+    this.load.image('spark', '../assets/spark.png');
+    this.load.image('snow', '../assets/snow.png');
+    this.load.image('img1', '../assets/img1.jpeg');
+    this.load.image('img2', '../assets/img2.jpeg');
+    this.load.image('img3', '../assets/img3.jpeg');
+    this.load.image('img4', '../assets/img4.jpeg');
     //this.load.image('birthday', '/assets/birthday.jpeg');
-    this.load.image('bdy', '/assets/bdy.png');
-    this.load.image('mountain', '/assets/mountain.png');
-    this.load.image('skate', '/assets/skate.png');
-    this.load.image('teddy', '/assets/teddy.png');
-    this.load.image('panda', '/assets/panda.png');
-    this.load.image('bts', '/assets/bts.png');
-    this.load.image('v', '/assets/v.png');
-    this.load.image('oikawa', '/assets/oikawa.png');
+    this.load.image('bdy', '../assets/bdy.png');
+    this.load.image('mountain', '../assets/mountain.png');
+    this.load.image('skate', '../assets/skate.png');
+    this.load.image('teddy', '../assets/teddy.png');
+    this.load.image('panda', '../assets/panda.png');
+    this.load.image('bts', '../assets/bts.png');
+    this.load.image('v', '../assets/v.png');
+    this.load.image('oikawa', '../assets/oikawa.png');
 
 
 
     //music doode
-    this.load.audio('backgroundMusic', '/assets/BGM.mp3');
+    this.load.audio('backgroundMusic', '../assets/BGM.mp3');
 
 
 
