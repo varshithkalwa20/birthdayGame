@@ -36,7 +36,7 @@ let surpriseCount = 2;
 let surprisesPassed = 0;
 let snowEmitter;
 
-// Preload assets
+//loadinggggg assettsss
 function preload() {
    this.load.image('sky', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/sky.png');
     this.load.image('ground', 'https://raw.githubusercontent.com/varshithkalwa20/birthdayGame/main/assets/ground.png');
@@ -74,10 +74,10 @@ function preload() {
 let image = ['img1', 'img2', 'img3','img4'];
 let arr=['teddy','skate','panda','bts','v','oikawa'];
 
-// Create game elements
+// Creating cute cute game elements
 function create() {
 
-    const music = this.sound.add('BGM', { loop: true, volume: 0.5 }); // Adjust volume and 
+    const music = this.sound.add('BGM', { loop: true, volume: 0.5 }); 
     music.play(); 
     this.add.image(config.width / 2, config.height / 2, 'sky');
     this.add.image(config.width / 2, config.height / 1.1, 'mountain');
@@ -92,26 +92,24 @@ function create() {
 
     this.physics.add.collider(player, platforms);
 
-    // Create candles, clouds, birds, and surprises
     createCandles.call(this);
     imgs.call(this);
     createClouds.call(this);
     createBirds.call(this);
     createSurprises.call(this);
 
-    // Display messages
+
     messageText = this.add.text(config.width / 2, 50, '', { fontSize: '32px', fill: '#fff' }).setOrigin(0.5);
     messageText.setAlpha(0);
 
-    // Create snow particle emitter for continuous snow effect
     const snowParticles = this.add.particles('snow');
     snowEmitter = snowParticles.createEmitter({
         speed: 20,
-        gravityY: 50, // Make snow fall towards the ground
+        gravityY: 50, 
         scale: { start: 0.1, end: 0.1 },
         lifespan: 4000,
         frequency: 100,
-        quantity: 1, // Adjusted to emit fewer snow particles
+        quantity: 1, 
         emitZone: {
             type: 'random',
             source: new Phaser.Geom.Rectangle(0, 0, config.width, 0),
@@ -120,7 +118,6 @@ function create() {
 
     cursors = this.input.keyboard.createCursorKeys();
 
-    // Spacebar handling for jump
     this.input.keyboard.on('keydown-SPACE', () => {
         if (!gameOver) {
             player.setVelocityY(jumpHeight);
@@ -132,66 +129,52 @@ function create() {
         player.body.allowGravity = true;
     });
 
-    // Set up collision detection between player and candles
+
     this.physics.add.overlap(player, candles, handleCandleCollision, null, this);
 }
 
-// Update game state
+
 function update() {
     if (!gameOver) {
         if (cursors.right.isDown) {
-            moveWorld(-speed * 0.1); // Move the world left as the player moves right
+            moveWorld(-speed * 0.1);
         } else if (cursors.left.isDown) {
-            moveWorld(speed * 0.1); // Move the world right as the player moves left
+            moveWorld(speed * 0.1); 
         } else {
-            stopWorld(); // Stop movement if no keys are pressed
+            stopWorld(); 
         }
 
-        // Check if the game is over after all candles have been passed
+        
         if (candlesPassed >= candleCount && !gameOver) {
             gameOver = true;
-            showBirthdayMessage.call(this); // Show birthday message
-            stopWorld(); // Stop movement after showing the birthday message
+            showBirthdayMessage.call(this); 
+            stopWorld(); 
         }
 
         if (player.body.touching.down) {
             jumped = false;
         }
 
-        // Debugging output to track game state
         console.log(`Candles Passed: ${candlesPassed}, Surprises Passed: ${surprisesPassed}, Game Over: ${gameOver}`);
     }
 }
 
-// Handle candle collision
+
 function handleCandleCollision() {
     if (!gameOver) {
-        restartGame.call(this); // Restart the game
+        restartGame.call(this); 
     }
 }
 
-// Show birthday message with animation
+
 function showBirthdayMessage() {
-    // Create the birthday message text
-    // const birthdayText = this.add.text(config.width / 2, config.height / 4, '', { fontSize: '64px', fill: '#800080' }).setOrigin(0.1); // Changed fill color to purple
-    // birthdayText.setAlpha(0); // Start with 0 opacity
+    
 
-    // Create an image below the message
+  
     const birthdayImage = this.add.image(config.width / 3, config.height /3.5 , 'bdy').setOrigin(0.1).setScale(0.5); // Adjust Y-coordinate to position below the text
-    birthdayImage.setAlpha(0); // Start with 0 opacity
-
-    // Create sparks particle emitter
-   
-
-    // Fade in animation for the message
-    // this.tweens.add({
-    //     targets: birthdayText,
-    //     alpha: 1,
-    //     duration: 2000,
-    //     ease: 'Power1',
-    // });
+    birthdayImage.setAlpha(0); 
+  
        
-            // Fade in the birthday image
             this.tweens.add({
                 targets: birthdayImage,
                 alpha: 1,
@@ -202,7 +185,7 @@ function showBirthdayMessage() {
 
 }
 
-// Restart the game
+
 function restartGame() {
     // Reset all game state variables
     candlesPassed = 0;
@@ -241,7 +224,7 @@ function createCandles() {
     }
 }
 
-// Create clouds
+
 function createClouds() {
     clouds = this.physics.add.group();
     const cloudDistance = 600;
@@ -266,30 +249,27 @@ function imgs() {
 // Create birds
 function createBirds() {
     birds = this.physics.add.group();
-    const birdDistance = 1500; // Distance between each bird
+    const birdDistance = 1500; 
     for (let i = 0; i < 5; i++) {
-        const birdY = Math.random() * 300; // Random Y position for each bird
-        const bird = birds.create(800 + i * birdDistance, birdY, 'bird'); // Create birds spaced out
+        const birdY = Math.random() * 300; 
+        const bird = birds.create(800 + i * birdDistance, birdY, 'bird'); 
         bird.setScale(0.1);
         bird.setImmovable(true);
     }
 }
 
-// Create surprise
-// Create surprises with all images displayed once
+
 function createSurprises() {
     surprises = this.physics.add.group();
-    const surpriseDistance = 3000; // Distance between surprises
-    const surpriseHeight = config.height - 420; // Constant height for surprises
-    
+    const surpriseDistance = 3000; 
+    const surpriseHeight = config.height - 420; 
     for (let i = 0; i < image.length; i++) {
-        const surpriseImage = image[i]; // Use each image from the array
-        const randomX = 1000 + i * surpriseDistance + Math.random() * 500; // Randomize x-position within a range
+        const surpriseImage = image[i]; 
+        const randomX = 1000 + i * surpriseDistance + Math.random() * 500; 
         const surprise = surprises.create(randomX, surpriseHeight, surpriseImage);
 
-        // Uniform scaling across all surprise images
-        const scaleFactor = 0.25; // Set the scale factor for all images
-        surprise.setScale(scaleFactor); // Apply the same scale to all surprise images
+        const scaleFactor = 0.25;
+        surprise.setScale(scaleFactor); 
         surprise.setImmovable(true);
     }
 }
@@ -297,22 +277,21 @@ function createSurprises() {
 
 
 
-// Move the world as the player moves (including candles, clouds, birds, and surprises)
 function moveWorld(distance) {
     candles.children.iterate(candle => {
         candle.x += distance;
         if (candle.x < player.x - player.width && candle.visible) {
             candlesPassed++;
             candle.setVisible(false);
-            candle.disableBody(false, false); // Disable the candle after passing
-            console.log('Candle passed!'); // Debugging output
+            candle.disableBody(false, false); 
+            console.log('Candle passed!'); 
         }
     });
     img.children.iterate(image => {
-        image.x += distance; // Move each image in the group
+        image.x += distance; 
         if (image.x < player.x - player.width && image.visible) {
           
-            console.log('Image passed!'); // Debugging output for image passing
+            console.log('Image passed!'); 
         }
     });
 
@@ -321,13 +300,13 @@ function moveWorld(distance) {
         if (cloud.x < -50) cloud.x = 850;
     });
 
-    // Move birds
+
     birds.children.iterate(bird => {
-        bird.x += distance; // Move the bird with the world
+        bird.x += distance; 
         if (bird.x < player.x - player.width && bird.visible) {
-            // Add any specific logic you need when a bird is passed, if necessary
+           
             bird.setVisible(false);
-            bird.disableBody(true, true); // Disable the bird after passing
+            bird.disableBody(true, true); 
         }
     });
 
@@ -336,7 +315,6 @@ function moveWorld(distance) {
     });
 }
 
-// Stop world movement
 function stopWorld() {
     candles.children.iterate(candle => {
         candle.setVelocityX(1);
@@ -349,7 +327,7 @@ function stopWorld() {
     });
 }
 
-// Display message
+
 function displayMessage(msg) {
     messageText.setText(msg);
     messageText.setAlpha(1);
